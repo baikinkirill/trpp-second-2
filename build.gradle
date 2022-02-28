@@ -66,7 +66,7 @@ javadoc {
 
 shadowJar {
     manifest {
-        attributes 'Main-Class': 'ru.mirea.Application'
+        attributes 'Main-Class': 'ru.mirea.trpp_second_2.Application'
     }
     archivesBaseName = "${project.name}"
     libsDirName = "${project.name}"
