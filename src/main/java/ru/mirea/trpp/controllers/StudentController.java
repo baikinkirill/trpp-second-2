@@ -1,29 +1,38 @@
-package ru.mirea.trpp_second_2.controllers;
+package ru.mirea.trpp.controllers;
 
 import com.opencsv.bean.CsvToBeanBuilder;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
-import ru.mirea.trpp_second_2.entity.Student;
+import ru.mirea.trpp.entity.Student;
 
 import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Optional;
 
-/** Контроллер для работы со студентами. */
+/**
+ * Контроллер для работы со студентами.
+ */
 @Controller("/student")
 public class StudentController {
 
-    /** Список студентов. */
+    /**
+     * Список студентов.
+     */
     private final List<Student> studentList;
 
-    /** Конструктор. */
+    /**
+     * Конструктор.
+     */
     public StudentController() {
-        studentList = new CsvToBeanBuilder<Student>(new InputStreamReader(this.getClass().getResourceAsStream("/MOCK_DATA.csv"))).withType(Student.class).build().parse();
+        studentList = new CsvToBeanBuilder<Student>(new InputStreamReader(this.getClass()
+                .getResourceAsStream("/MOCK_DATA.csv")))
+                .withType(Student.class).build().parse();
     }
 
     /**
      * Получить список студентов.
+     *
      * @return список студентов
      */
     @Get()
@@ -33,6 +42,7 @@ public class StudentController {
 
     /**
      * Найти студента по идентификатору.
+     *
      * @param id идентификатор студента
      * @return Студент, если есть, иначе 404 ошибка
      */
